@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MSEM — Mode africaine contemporaine | La Grandeur se porte avant de se voir.</title>
+<meta name="description" content="MSEM, mode africaine contemporaine. Boubous, robes, chemises et pantalons porteurs de symboles. Prêt-à-porter et sur mesure. Paiement MoMo, Orange Money, carte ou à la livraison.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={
+  theme:{extend:{
+    fontFamily:{serif:['Fraunces','Georgia','serif'],sans:['Figtree','system-ui','sans-serif']},
+    colors:{paper:'var(--paper)',paper2:'var(--paper2)',ink:'var(--ink)',accent:'var(--accent)',brun:'#2D241B',brun2:'#231B13',or:'#BF8A40',jaune:'#F2C80F',terre:'#A35317',ivoire:'#FBF6EC'},
+    boxShadow:{soft:'0 10px 40px -12px rgba(45,36,27,.18)'}
+  }}
+}
+</script>
+<style>
+:root{
+  /* Les variables --bogo, --icons et --frise sont désormais définies par msem-identity.css
+     (versions à fond transparent) : ne pas les redéclarer ici. */
+  --paper:#FBF6EC;
+  --paper2:#F3EAD7;
+  --ink:#2D241B;
+  --accent:#A35317;
+  color-scheme:light dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#1B1510;--paper2:#241C15;--ink:#F3EAD7;--accent:#E2A262}
+}
+:root[data-theme="dark"]{--paper:#1B1510;--paper2:#241C15;--ink:#F3EAD7;--accent:#E2A262}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px);scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:60}
+h1,h2,h3,.f{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto}
+.m{background:currentColor;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat;display:block}
+.mt{-webkit-mask:var(--i) 0 0/var(--s,420px) repeat;mask:var(--i) 0 0/var(--s,420px) repeat;background:currentColor;position:absolute;inset:0;pointer-events:none}
+.mc{-webkit-mask:var(--i) center/cover no-repeat;mask:var(--i) center/cover no-repeat;background:currentColor;position:absolute;inset:0;pointer-events:none}
+.frise{height:42px;background:var(--frise) 0 0/auto 100% repeat-x}
+.st{background-image:linear-gradient(90deg,currentColor 55%,transparent 0);background-size:14px 2px;background-repeat:repeat-x;height:2px}
+:focus-visible{outline:3px solid #F2C80F;outline-offset:2px;border-radius:4px}
+@keyframes thread{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.thread{animation:thread 2.6s cubic-bezier(.6,.1,.2,1) .3s both}
+@media (prefers-reduced-motion:reduce){.thread{animation:none}html{scroll-behavior:auto}*{transition:none!important}}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.5rem;font-weight:600;border-radius:999px;transition:background-color .2s,color .2s;min-height:46px;text-align:center}
+.nav a{padding:.55rem .15rem;white-space:nowrap}
+.sz{min-width:34px;height:30px;font-size:12px;font-weight:600;border:1px solid rgba(45,36,27,.3);border-radius:6px;background:#FBF6EC;color:#2D241B}
+.sz.on{background:#2D241B;color:#FBF6EC;border-color:#2D241B}
+dialog::backdrop{background:rgba(27,21,16,.65);backdrop-filter:blur(4px)}
+dialog{border:none;padding:0;border-radius:1rem;max-width:min(920px,95vw);width:100%;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.4)}
+dialog[open]{animation:dlgIn .25s ease-out}
+@keyframes dlgIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.group:hover .card-img{transform:scale(1.04)}
+</style>
+<!-- Couche d'identité MSEM : fond bogolan, symboles animés, rail, coutures (à charger après le <style>) -->
+<link rel="stylesheet" href="./msem-assets/css/msem-identity.css">
+</head>
+<body>
+
+<!-- Bandeau annonce -->
+<div class="bg-brun text-ivoire text-[13px] py-2 px-4 text-center">Paiement par MoMo, Orange Money, carte bancaire ou à la livraison. Prix en FCFA et en euros.</div>
+
+<!-- HEADER -->
+<header class="sticky z-50 bg-paper border-b border-or/40" style="top:env(safe-area-inset-top,0px)">
+ <div class="mx-auto max-w-7xl px-4 h-[72px] flex items-center gap-4 lg:gap-8">
+  <button id="burger" class="lg:hidden p-2 -ml-2" aria-label="Menu" aria-expanded="false" aria-controls="mob"><svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a href="#" aria-label="MSEM, accueil" class="shrink-0 block">
+    <img src="./msem-assets/img/logo-fonce.webp" alt="Logo MSEM" width="131" height="40" class="h-10 w-auto object-contain dark:hidden">
+    <img src="./msem-assets/img/logo-clair.webp" alt="Logo MSEM" width="131" height="40" class="h-10 w-auto object-contain hidden dark:block">
+  </a>
+  <form id="sf" role="search" class="hidden md:flex flex-1 max-w-xl relative">
+   <label for="q" class="sr-only">Rechercher</label>
+   <input id="q" type="search" placeholder="Rechercher un boubou, une robe, une référence" class="w-full h-11 rounded-full border border-ink/30 bg-paper2 pl-5 pr-12 text-[15px] placeholder:text-ink/50">
+   <button class="absolute right-1 top-1 h-9 w-9 rounded-full bg-brun text-ivoire grid place-items-center dark:bg-jaune dark:text-brun" aria-label="Lancer la recherche"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+  </form>
+  <div class="ml-auto flex items-center gap-1 sm:gap-3">
+   <div class="hidden sm:flex rounded-full border border-or/60 p-0.5 text-[13px] font-semibold" role="group" aria-label="Devise">
+     <button data-cur="XAF" class="cur px-3 py-1 rounded-full">FCFA</button>
+     <button data-cur="EUR" class="cur px-3 py-1 rounded-full">EUR</button>
+   </div>
+   <button class="p-2" aria-label="Mon compte"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-6 8-6s7 1.5 8 6"/></svg></button>
+   <button class="relative p-2" aria-label="Favoris" id="favBtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11Z"/></svg><span id="wc" class="absolute top-0 right-0 bg-terre text-ivoire text-[11px] font-bold rounded-full min-w-[18px] h-[18px] px-1 grid place-items-center hidden">0</span></button>
+   <button id="cartbtn" class="relative p-2" aria-label="Ouvrir le panier" aria-controls="dr" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cnt" class="absolute top-0 right-0 bg-jaune text-brun text-[11px] font-bold rounded-full min-w-[18px] h-[18px] px-1 grid place-items-center" aria-live="polite">0</span></button>
+  </div>
+ </div>
+ <nav class="nav hidden lg:block border-t border-or/30" aria-label="Catégories">
+   <div class="mx-auto max-w-7xl px-4 flex items-center gap-7 text-[15px] font-medium">
+     <a class="hover:text-accent" href="#boutique" data-f="Tout">Nouveautés</a>
+     <a class="hover:text-accent" href="#boutique" data-f="Femmes">Femmes</a>
+     <a class="hover:text-accent" href="#boutique" data-f="Hommes">Hommes</a>
+     <a class="hover:text-accent" href="#boutique" data-f="Enfants">Enfants</a>
+     <a class="hover:text-accent" href="#sur-mesure">Sur mesure</a>
+     <a class="hover:text-accent" href="#signature">Collections</a>
+     <a class="hover:text-accent" href="#histoire">Notre histoire</a>
+     <span class="ml-auto flex gap-6 text-ink/55">
+       <a href="#bientot">Accessoires <b class="ml-1 text-[11px] bg-jaune text-brun rounded-full px-2 py-0.5">Bientôt</b></a>
+       <a href="#bientot">Art et culture <b class="ml-1 text-[11px] bg-jaune text-brun rounded-full px-2 py-0.5">Bientôt</b></a>
+     </span>
+   </div>
+ </nav>
+ <nav id="mob" class="hidden lg:hidden border-t border-or/40 bg-paper px-4 py-4 grid gap-3 font-medium" aria-label="Menu mobile">
+  <form id="sf2" class="flex"><input id="q2" type="search" placeholder="Rechercher" aria-label="Rechercher" class="w-full h-11 rounded-full border border-ink/30 bg-paper2 px-5"></form>
+  <a href="#boutique" data-f="Tout">Nouveautés</a><a href="#boutique" data-f="Femmes">Femmes</a><a href="#boutique" data-f="Hommes">Hommes</a><a href="#boutique" data-f="Enfants">Enfants</a><a href="#sur-mesure">Sur mesure</a><a href="#histoire">Notre histoire</a><a href="#bientot" class="text-ink/55">Accessoires et art (bientôt)</a>
+  <div class="flex rounded-full border border-or/60 p-0.5 text-sm font-semibold w-fit" role="group" aria-label="Devise"><button data-cur="XAF" class="cur px-3 py-1 rounded-full">FCFA</button><button data-cur="EUR" class="cur px-3 py-1 rounded-full">EUR</button></div>
+ </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="mx-auto max-w-7xl px-4 pt-5 grid lg:grid-cols-12 gap-4">
+ <div class="lg:col-span-8 relative overflow-hidden rounded-2xl bg-brun text-ivoire min-h-[560px] lg:min-h-[600px]">
+  <img src="./msem-assets/img/IMG_0150.JPG.jpeg" alt="Mannequin portant une tenue MSEM" class="absolute inset-0 w-full h-full object-cover object-top opacity-90" loading="eager">
+  <div class="absolute inset-0 bg-gradient-to-r from-brun via-brun/70 to-transparent"></div>
+  <div class="mt text-or opacity-[.06]" style="--i:var(--bogo);--s:500px"></div>
+  <svg class="thread absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true"><path vector-effect="non-scaling-stroke" d="M-10 470C150 380 250 560 420 470S640 250 810 330" fill="none" stroke="#F2C80F" stroke-width="2.5" stroke-dasharray="11 13" stroke-linecap="round"/></svg>
+  <div class="relative p-7 sm:p-10 lg:p-12 max-w-[26rem] lg:max-w-md">
+   <span class="inline-block bg-jaune text-brun text-sm font-semibold rounded-full px-3 py-1">Nouvelle collection</span>
+   <h1 class="mt-5 text-[2.5rem] sm:text-5xl xl:text-[3.4rem] font-semibold leading-[1.06] tracking-tight">La Grandeur se porte avant de se voir.</h1>
+   <p class="mt-5 text-ivoire/80">Boubous, robes, chemises et pantalons qui portent l'histoire et les symboles de l'Afrique. Prêts à porter ou confectionnés pour vous.</p>
+   <div class="mt-7 flex flex-wrap gap-3"><a href="#boutique" class="btn bg-jaune text-brun hover:bg-ivoire">Voir la boutique</a><a href="#sur-mesure" class="btn border border-ivoire/50 hover:bg-ivoire hover:text-brun">Commander sur mesure</a></div>
+  </div>
+  <div class="frise bg-white absolute inset-x-0 bottom-0 opacity-90"></div>
+ </div>
+ <div class="lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+  <a href="#sur-mesure" class="relative overflow-hidden rounded-2xl bg-jaune text-brun p-6 min-h-[200px] flex flex-col justify-between group">
+   <img src="./msem-assets/img/IMG_9512.JPG.jpeg" alt="Détail sur mesure" class="absolute inset-0 w-full h-full object-cover opacity-25">
+   <div class="mt text-terre opacity-[.15]" style="--i:var(--bogo);--s:300px"></div>
+   <div class="relative max-w-[55%]"><h2 class="text-2xl font-semibold leading-tight">Votre tenue sur mesure</h2><p class="text-sm mt-1">Modèle, taille, couleur : nous confectionnons pour vous.</p></div>
+   <span class="relative btn bg-brun text-ivoire w-fit mt-4 group-hover:bg-terre">Commander</span>
+  </a>
+  <a href="#signature" class="relative overflow-hidden rounded-2xl bg-terre text-ivoire p-6 min-h-[200px] flex flex-col justify-between group">
+   <img src="./msem-assets/img/IMG_9519.JPG.jpeg" alt="Motif signature MSEM" class="absolute inset-0 w-full h-full object-cover opacity-40">
+   <div class="mt text-ivoire opacity-[.1]" style="--i:var(--icons);--s:320px"></div>
+   <div class="relative max-w-[58%]"><h2 class="text-2xl font-semibold leading-tight">Le motif signature</h2><p class="text-sm mt-1 text-ivoire/85">Masques, cauris, continent : chaque symbole est un langage.</p></div>
+   <span class="relative btn bg-ivoire text-brun w-fit mt-4 group-hover:bg-jaune">Découvrir</span>
+  </a>
+ </div>
+</section>
+
+<!-- RÉASSURANCE -->
+<section class="mx-auto max-w-7xl px-4 mt-6"><ul id="trust" class="grid grid-cols-2 lg:grid-cols-4 gap-4 border-y border-or/40 py-5"></ul></section>
+
+<!-- CATÉGORIES -->
+<section class="mx-auto max-w-7xl px-4 pt-16">
+ <div class="flex items-end justify-between gap-4"><h2 class="text-3xl sm:text-4xl font-semibold">Parcourir par univers</h2><a href="#boutique" class="font-semibold underline decoration-jaune decoration-4 underline-offset-8 hover:text-accent hidden sm:block">Toute la boutique</a></div>
+ <div id="cats" class="mt-7 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"></div>
+</section>
+
+<!-- BOUTIQUE -->
+<section id="boutique" class="mx-auto max-w-7xl px-4 pt-20">
+ <div class="flex flex-wrap items-end justify-between gap-4">
+  <div><h2 class="text-3xl sm:text-4xl font-semibold">Les dernières créations</h2><p class="text-ink/65 mt-1">Chaque modèle raconte son histoire et explique ses symboles.</p></div>
+  <div id="tabs" class="flex flex-wrap gap-2" role="tablist" aria-label="Filtrer les produits"></div>
+ </div>
+ <p id="empty" class="hidden mt-10 text-ink/70">Aucun modèle ne correspond à votre recherche. Essayez « boubou », « robe » ou « chemise ».</p>
+ <div id="grid" class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10"></div>
+ <div class="text-center mt-12"><button class="btn border border-ink/50 hover:bg-ink hover:text-paper" onclick="document.getElementById('q').value='';document.getElementById('q').dispatchEvent(new Event('input'))">Voir tous les modèles</button></div>
+</section>
+
+<!-- SIGNATURE -->
+<section id="signature" class="mx-auto max-w-7xl px-4 pt-24 grid lg:grid-cols-2 gap-6 items-stretch">
+ <div class="relative overflow-hidden rounded-2xl bg-brun min-h-[360px]">
+   <img src="./msem-assets/img/IMG_9520.JPG.jpeg" alt="Motif signature MSEM en détail" class="absolute inset-0 w-full h-full object-cover">
+   <div class="absolute left-4 bottom-4 bg-paper text-ink text-sm font-semibold px-4 py-2 rounded-full">Le motif signature MSEM</div>
+ </div>
+ <div class="flex flex-col justify-center py-6 lg:px-10">
+  <h2 class="text-3xl sm:text-5xl font-semibold leading-[1.1]">Un imprimé qui raconte une histoire.</h2>
+  <p class="mt-5 text-ink/75 max-w-lg">Masques, cauris, continent, spirales et aiguilles : chez MSEM, rien n'est décoratif. Chaque symbole du motif a une signification, expliquée sur la fiche de chaque modèle.</p>
+  <a href="#boutique" class="btn mt-8 bg-brun text-ivoire hover:bg-terre w-fit dark:bg-jaune dark:text-brun">Voir les pièces imprimées</a>
+ </div>
+</section>
+
+<!-- SUR MESURE -->
+<section id="sur-mesure" class="mt-24 relative bg-jaune text-brun overflow-hidden">
+ <div class="mt text-terre opacity-[.15]" style="--i:var(--bogo);--s:440px"></div>
+ <div class="relative mx-auto max-w-7xl px-4 py-20">
+  <div class="grid lg:grid-cols-12 gap-8 items-end">
+   <div class="lg:col-span-7">
+    <h2 class="text-4xl sm:text-5xl font-semibold leading-tight">Votre tenue, confectionnée pour vous.</h2>
+    <p class="mt-4 text-lg max-w-xl">Chaque modèle de la boutique peut être confectionné sur mesure, même ceux disponibles en prêt à porter. Choisissez-en un, indiquez votre taille ou vos mensurations : nous le confectionnons, vous suivez l'avancement.</p>
+   </div>
+   <ol class="lg:col-span-5 grid grid-cols-3 gap-2">
+    <li class="bg-ivoire/80 rounded-xl p-3"><span class="f text-2xl font-semibold text-terre">1</span><p class="font-semibold leading-tight">Choisir</p><p class="text-xs text-brun/70">Modèle, taille, couleur</p></li>
+    <li class="bg-ivoire/80 rounded-xl p-3"><span class="f text-2xl font-semibold text-terre">2</span><p class="font-semibold leading-tight">Confirmer</p><p class="text-xs text-brun/70">MoMo, Orange Money, carte ou livraison</p></li>
+    <li class="bg-ivoire/80 rounded-xl p-3"><span class="f text-2xl font-semibold text-terre">3</span><p class="font-semibold leading-tight">Recevoir</p><p class="text-xs text-brun/70">Suivi, puis livraison</p></li>
+   </ol>
+  </div>
+
+  <div class="mt-10 grid lg:grid-cols-12 gap-6 items-start">
+   <div class="lg:col-span-7">
+    <p class="font-semibold mb-3">Choisissez un modèle</p>
+    <div id="smGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3" role="listbox" aria-label="Modèles disponibles sur mesure"></div>
+    <a href="#boutique" class="inline-block mt-6 font-semibold underline decoration-brun decoration-4 underline-offset-8 hover:text-terre">Voir toute la boutique</a>
+   </div>
+
+   <div class="lg:col-span-5 lg:sticky lg:top-40 bg-ivoire text-brun rounded-2xl overflow-hidden shadow-soft" aria-live="polite">
+    <div class="relative">
+     <img id="smImg" src="" alt="" class="w-full aspect-[4/3] object-cover object-top bg-paper2">
+     <span id="smTag" class="absolute left-3 top-3 bg-jaune text-brun text-xs font-semibold rounded-full px-3 py-1"></span>
+    </div>
+    <div class="p-5 grid gap-4">
+     <div class="flex items-start justify-between gap-3">
+      <div><h3 id="smName" class="f text-2xl font-semibold leading-tight"></h3><p id="smRef" class="text-xs text-brun/60"></p></div>
+      <p id="smPrice" class="price font-semibold text-lg whitespace-nowrap" data-e="0"></p>
+     </div>
+     <div>
+      <p class="text-sm font-semibold">Taille</p>
+      <div id="smSizes" class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Taille">
+       <button type="button" class="sz" data-sz="S">S</button><button type="button" class="sz on" data-sz="M">M</button><button type="button" class="sz" data-sz="L">L</button><button type="button" class="sz" data-sz="XL">XL</button><button type="button" class="sz" data-sz="XXL">XXL</button>
+      </div>
+      <label class="mt-3 flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" id="smMeas" class="w-4 h-4 accent-[#2D241B]"> J'ai mes mensurations (en cm)</label>
+      <div id="smMF" class="hidden grid grid-cols-2 gap-2 mt-2">
+       <input name="Poitrine" inputmode="numeric" placeholder="Poitrine" aria-label="Tour de poitrine en cm" class="h-10 rounded-full border border-brun/30 bg-white px-4 text-sm">
+       <input name="Taille" inputmode="numeric" placeholder="Taille" aria-label="Tour de taille en cm" class="h-10 rounded-full border border-brun/30 bg-white px-4 text-sm">
+       <input name="Hanches" inputmode="numeric" placeholder="Hanches" aria-label="Tour de hanches en cm" class="h-10 rounded-full border border-brun/30 bg-white px-4 text-sm">
+       <input name="Longueur" inputmode="numeric" placeholder="Longueur" aria-label="Longueur souhaitée en cm" class="h-10 rounded-full border border-brun/30 bg-white px-4 text-sm">
+      </div>
+     </div>
+     <div>
+      <p class="text-sm font-semibold">Couleur</p>
+      <div id="smCols" class="flex flex-wrap gap-2 mt-2" role="group" aria-label="Couleur"></div>
+     </div>
+     <label class="text-sm font-semibold">Précisions (facultatif)<textarea id="smNote" rows="2" class="mt-1 w-full rounded-xl border border-brun/30 bg-white px-4 py-2 text-sm font-normal" placeholder="Longueur des manches, broderie, occasion…"></textarea></label>
+     <div class="rounded-xl bg-paper2 text-brun p-3 text-sm" style="background:#F3EAD7">
+      <p><b>Durée de confection :</b> <span id="smDur"></span>, puis livraison.</p>
+      <p id="smAlso" class="mt-1 text-brun/75"></p>
+     </div>
+     <button id="smAdd" type="button" class="btn w-full bg-brun text-ivoire hover:bg-terre">Ajouter au panier (sur mesure)</button>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- HISTOIRE -->
+<section id="histoire" class="mx-auto max-w-7xl px-4 pt-24 grid lg:grid-cols-12 gap-10">
+ <h2 class="lg:col-span-7 text-3xl sm:text-5xl font-semibold leading-[1.1]">MSEM n'habille pas des corps. MSEM révèle des identités.</h2>
+ <div class="lg:col-span-5 space-y-4 text-ink/80 f text-lg leading-relaxed"><p>L'Afritude n'est pas un style vestimentaire, c'est une posture : moderne sans renier ses traditions, ouverte au monde sans perdre son âme, fière sans être arrogante.</p><p>Grandeur, maturité, élégance, beauté : quatre fondements que l'on porte avant de les montrer.</p><a href="#" class="font-sans font-semibold underline decoration-jaune decoration-4 underline-offset-8 hover:text-accent">Lire notre histoire</a></div>
+</section>
+
+<!-- AVIS -->
+<section class="mx-auto max-w-7xl px-4 pt-24"><h2 class="text-3xl sm:text-4xl font-semibold">Ils portent MSEM</h2><div id="rev" class="mt-7 grid md:grid-cols-3 gap-4"></div></section>
+
+<!-- BIENTÔT : accessoires et objets d'art -->
+<section id="bientot" class="mt-24 relative overflow-hidden bg-brun text-ivoire">
+ <div class="mt text-ivoire opacity-[.05]" style="--i:var(--icons);--s:520px"></div>
+ <div class="relative mx-auto max-w-7xl px-4 py-20">
+  <div class="max-w-2xl">
+   <span class="inline-block bg-jaune text-brun text-sm font-semibold rounded-full px-3 py-1">Bientôt</span>
+   <h2 class="mt-4 text-3xl sm:text-5xl font-semibold leading-[1.1]">Accessoires, objets et œuvres d'art africains.</h2>
+   <p class="mt-4 text-ivoire/80">Aujourd'hui, MSEM habille. Demain, la maison s'agrandit : des accessoires pour compléter la tenue, puis des objets et des œuvres qui racontent l'Afrique.</p>
+  </div>
+
+  <ol class="mt-12 grid md:grid-cols-3 gap-5" aria-label="Feuille de route">
+   <li class="border-t-2 border-jaune pt-4"><span class="inline-flex items-center gap-2 text-sm font-semibold text-jaune"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Ouvert</span><h3 class="f text-2xl font-semibold mt-1">Vêtements</h3><p class="text-ivoire/70 text-sm">Boubous, robes, chemises, pantalons. Prêt à porter et sur mesure.</p></li>
+   <li class="border-t-2 border-dashed border-or pt-4"><span class="text-sm font-semibold text-or">Prochainement</span><h3 class="f text-2xl font-semibold mt-1">Accessoires</h3><p class="text-ivoire/70 text-sm">Pour compléter la tenue, dans les mêmes motifs et les mêmes matières.</p></li>
+   <li class="border-t-2 border-dashed border-or/60 pt-4"><span class="text-sm font-semibold text-or/80">Ensuite</span><h3 class="f text-2xl font-semibold mt-1">Objets et œuvres d'art</h3><p class="text-ivoire/70 text-sm">Des pièces culturelles africaines, chacune avec son histoire.</p></li>
+  </ol>
+
+  <div class="mt-10 grid md:grid-cols-2 gap-5">
+   <article class="group relative overflow-hidden rounded-2xl min-h-[340px] flex items-end">
+    <img src="./msem-assets/img/IMG_9522.JPG.jpeg" alt="Aperçu des accessoires MSEM" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun/10"></div>
+    <svg class="absolute right-5 top-5 w-20 h-14 text-jaune/80" viewBox="0 0 263 164" aria-hidden="true"><use href="#ms-collier" fill="currentColor"/></svg>
+    <div class="relative p-6 sm:p-8">
+     <span class="inline-block bg-ivoire/15 backdrop-blur text-ivoire text-xs font-semibold rounded-full px-3 py-1">Prochainement</span>
+     <h3 class="f text-3xl font-semibold mt-3">Accessoires</h3>
+     <p class="mt-2 text-ivoire/85 max-w-sm">Les pièces qui terminent une tenue, brodées et imprimées comme nos vêtements.</p>
+    </div>
+   </article>
+   <article class="group relative overflow-hidden rounded-2xl min-h-[340px] flex items-end">
+    <img src="./msem-assets/img/IMG_9521.JPG.jpeg" alt="Aperçu des objets d'art africains" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-t from-brun via-brun/60 to-brun/10"></div>
+    <svg class="absolute right-5 top-5 w-14 h-[4.5rem] text-jaune/80" viewBox="0 0 190 237" aria-hidden="true"><use href="#ms-masque" fill="currentColor"/></svg>
+    <div class="relative p-6 sm:p-8">
+     <span class="inline-block bg-ivoire/15 backdrop-blur text-ivoire text-xs font-semibold rounded-full px-3 py-1">Ensuite</span>
+     <h3 class="f text-3xl font-semibold mt-3">Objets et œuvres d'art</h3>
+     <p class="mt-2 text-ivoire/85 max-w-sm">Des créations qui portent la mémoire et les symboles de l'Afrique, pour habiter la maison.</p>
+    </div>
+   </article>
+  </div>
+
+  <form class="mt-10 grid gap-4 max-w-2xl" onsubmit="event.preventDefault();this.querySelector('p.ok').hidden=false;this.reset()">
+   <p class="f text-xl font-semibold">Soyez prévenu à l'ouverture</p>
+   <div class="flex flex-wrap gap-5 text-sm font-semibold">
+    <label class="flex items-center gap-2"><input type="checkbox" checked class="w-4 h-4 accent-[#F2C80F]"> Accessoires</label>
+    <label class="flex items-center gap-2"><input type="checkbox" checked class="w-4 h-4 accent-[#F2C80F]"> Objets et œuvres d'art</label>
+   </div>
+   <div class="flex flex-col sm:flex-row gap-3"><label class="sr-only" for="eb">Votre adresse email</label><input id="eb" type="email" required placeholder="Votre adresse email" class="flex-1 min-h-[46px] rounded-full bg-ivoire/10 border border-ivoire/40 px-5 placeholder:text-ivoire/60"><button class="btn bg-jaune text-brun hover:bg-ivoire">Me prévenir</button></div>
+   <p hidden class="ok text-jaune font-semibold" role="status">Merci, vous serez prévenu à l'ouverture.</p>
+  </form>
+ </div>
+</section>
+
+<section class="mx-auto max-w-5xl px-4 py-20 grid md:grid-cols-2 gap-8 items-center">
+ <div><h2 class="text-3xl font-semibold">Recevez nos histoires.</h2><p class="mt-2 text-ink/75">Symboles, savoir-faire et nouvelles créations, dans votre boîte mail.</p></div>
+ <form onsubmit="event.preventDefault();document.getElementById('nm').hidden=false;this.reset()" class="flex flex-col sm:flex-row gap-3"><label class="sr-only" for="em">Votre adresse email</label><input id="em" type="email" required placeholder="Votre adresse email" class="flex-1 min-h-[46px] rounded-full border border-ink/40 bg-transparent px-5 placeholder:text-ink/50"><button class="btn bg-brun text-ivoire hover:bg-terre dark:bg-jaune dark:text-brun">S'abonner</button></form>
+ <p id="nm" hidden class="md:col-span-2 text-accent font-semibold" role="status">Merci. Votre inscription est enregistrée.</p>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer id="contact" class="bg-brun2 text-ivoire">
+ <div class="frise bg-white"></div>
+ <div class="mx-auto max-w-7xl px-4 py-14 grid md:grid-cols-12 gap-10">
+  <div class="md:col-span-4">
+    <img src="./msem-assets/img/logo-clair.webp" alt="Logo MSEM" width="157" height="48" class="h-12 w-auto object-contain mb-4">
+    <p class="f mt-4 text-lg max-w-xs">La Grandeur se porte avant de se voir.</p>
+    <div class="mt-5 flex flex-wrap gap-2 text-xs font-semibold">
+      <span class="bg-ivoire/10 rounded-full px-3 py-1">MTN MoMo</span>
+      <span class="bg-ivoire/10 rounded-full px-3 py-1">Orange Money</span>
+      <span class="bg-ivoire/10 rounded-full px-3 py-1">Carte bancaire</span>
+      <span class="bg-ivoire/10 rounded-full px-3 py-1">À la livraison</span>
+    </div>
+  </div>
+  <nav class="md:col-span-2" aria-label="Boutique"><h3 class="f text-jaune text-lg mb-3">Boutique</h3><ul class="space-y-2 text-ivoire/80"><li><a href="#boutique" data-f="Femmes" class="hover:text-jaune">Femmes</a></li><li><a href="#boutique" data-f="Hommes" class="hover:text-jaune">Hommes</a></li><li><a href="#boutique" data-f="Enfants" class="hover:text-jaune">Enfants</a></li><li><a href="#sur-mesure" class="hover:text-jaune">Sur mesure</a></li></ul></nav>
+  <nav class="md:col-span-3" aria-label="La marque"><h3 class="f text-jaune text-lg mb-3">La marque</h3><ul class="space-y-2 text-ivoire/80"><li><a href="#histoire" class="hover:text-jaune">Notre histoire</a></li><li><a href="#signature" class="hover:text-jaune">Le motif signature</a></li><li><a href="#bientot" class="hover:text-jaune">Accessoires et art (bientôt)</a></li></ul></nav>
+  <nav class="md:col-span-3" aria-label="Aide"><h3 class="f text-jaune text-lg mb-3">Aide</h3><ul class="space-y-2 text-ivoire/80"><li><a href="#" class="hover:text-jaune">Livraison et paiement</a></li><li><a href="#" class="hover:text-jaune">Suivre ma commande</a></li><li><a href="#" class="hover:text-jaune">Questions fréquentes</a></li><li><a href="#" class="hover:text-jaune">Conditions générales</a></li></ul></nav>
+ </div>
+ <div class="border-t border-or/30"><div class="mx-auto max-w-7xl px-4 py-5 text-sm text-ivoire/65">© 2026 MSEM. Tous droits réservés.</div></div>
+</footer>
+
+<!-- PANIER LATÉRAL -->
+<div id="ov" class="fixed inset-0 bg-black/50 z-[65] hidden"></div>
+<aside id="dr" class="fixed inset-y-0 right-0 w-full max-w-md bg-paper text-ink z-[70] shadow-2xl flex flex-col translate-x-full transition-transform duration-300" aria-label="Panier" aria-hidden="true">
+ <div class="flex items-center justify-between p-5 border-b border-or/40">
+   <h2 class="text-2xl font-semibold">Votre panier</h2>
+   <button id="dc" class="p-2" aria-label="Fermer le panier"><svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+ </div>
+ <ul id="items" class="flex-1 overflow-auto p-5 space-y-4"></ul>
+ <div class="p-5 border-t border-or/40">
+   <div class="flex justify-between text-lg font-semibold"><span>Total</span><span id="tot" aria-live="polite">0</span></div>
+   <p class="text-sm text-ink/65 mt-1">Livraison calculée à l'étape suivante. Paiement par MoMo, Orange Money, carte ou à la livraison.</p>
+   <button id="checkout" class="btn w-full mt-4 bg-jaune text-brun hover:bg-brun hover:text-ivoire">Passer la commande</button>
+   <button id="clearCart" class="mt-2 text-sm text-ink/60 underline underline-offset-4 hover:text-terre">Vider le panier</button>
+ </div>
+</aside>
+
+<!-- MODALE FICHE PRODUIT -->
+<dialog id="productModal" aria-labelledby="pmTitle">
+  <div class="grid md:grid-cols-2 gap-6 p-5 sm:p-7">
+    <div id="pmVisual" class="aspect-[4/5] rounded-xl overflow-hidden bg-paper2"></div>
+    <div class="flex flex-col">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p id="pmRef" class="text-xs font-semibold tracking-wider text-accent uppercase"></p>
+          <h3 id="pmTitle" class="f text-3xl font-semibold mt-1"></h3>
+        </div>
+        <button class="p-2 rounded-full hover:bg-ink/5" onclick="document.getElementById('productModal').close()" aria-label="Fermer"><svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+      </div>
+      <p id="pmPrice" class="mt-3 text-xl font-semibold"></p>
+      <div id="pmMode" class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Mode de fabrication"></div>
+      <p id="pmDur" class="mt-2 text-sm text-ink/65"></p>
+      <p id="pmStory" class="mt-4 text-ink/75"></p>
+      <div class="mt-5">
+        <p class="text-sm font-semibold">Taille</p>
+        <div id="pmSizes" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+      <div class="mt-5">
+        <p class="text-sm font-semibold">Couleur</p>
+        <div id="pmColors" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+      <div class="mt-auto pt-6 flex flex-wrap gap-3">
+        <button id="pmAdd" class="btn bg-brun text-ivoire hover:bg-terre dark:bg-jaune dark:text-brun">Ajouter au panier</button>
+        <button class="btn border border-ink/40 hover:bg-ink hover:text-paper" onclick="document.getElementById('productModal').close()">Continuer</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- MODALE TUNNEL DE COMMANDE -->
+<dialog id="checkoutModal" aria-labelledby="cmTitle">
+  <div class="p-5 sm:p-7 max-h-[90vh] overflow-auto">
+    <div class="flex items-center justify-between mb-5">
+      <h3 id="cmTitle" class="f text-2xl font-semibold">Finaliser la commande</h3>
+      <button class="p-2 rounded-full hover:bg-ink/5" onclick="document.getElementById('checkoutModal').close()" aria-label="Fermer"><svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+    </div>
+    <ol class="flex flex-wrap gap-2 text-xs font-semibold mb-5" id="cmSteps"></ol>
+    <div id="cmBody"></div>
+  </div>
+</dialog>
+
+<script>
+/* =========================================================================
+   DONNÉES PRODUITS
+   ========================================================================= */
+const P = [
+  {n:'Boubou Soleil',r:'MSEM-HOM-0001',e:95,g:'Hommes',m:'Disponible',t:'Nouveau',sw:['#A35317','#2D241B','#FBF6EC'],rt:'4,9',img:'./msem-assets/img/IMG_9512.JPG.jpeg',
+   story:'Le boubou Soleil incarne la noblesse du geste. Ses broderies dorées rappellent la parole des anciens : la grandeur se porte avant de se voir.'},
+  {n:'Robe Mémoire',r:'MSEM-FEM-0002',e:120,g:'Femmes',m:'Sur commande',t:'Nouveau',sw:['#F2C80F','#A35317'],rt:'5,0',img:'./msem-assets/img/IMG_9514.JPG.jpeg',
+   story:'Chaque motif de cette robe est un idéogramme de résilience. Le cauris, monnaie et symbole de prospérité, y tisse une mémoire vivante.'},
+  {n:'Chemise Horizon',r:'MSEM-HOM-0003',e:65,o:79,g:'Hommes',m:'Disponible',t:'-18 %',sw:['#2D241B','#BF8A40'],rt:'4,8',img:'./msem-assets/img/IMG_9515.JPG.jpeg',
+   story:'La chemise Horizon porte le motif signature MSEM : masques, spirales et continent. Chaque symbole est expliqué sur la fiche du modèle.'},
+  {n:'Pantalon Lignée',r:'MSEM-HOM-0004',e:70,g:'Hommes',m:'Disponible',sw:['#FBF6EC','#2D241B'],rt:'4,7',img:'./msem-assets/img/IMG_9516.JPG.jpeg',
+   story:'Les lignes verticales du pantalon Lignée évoquent les sentiers du Sahel. Une pièce sobre, à porter avec un boubou ou une chemise imprimée.'},
+  {n:'Robe Cauri',r:'MSEM-FEM-0005',e:135,g:'Femmes',m:'Sur commande',sw:['#2D241B','#F2C80F','#FBF6EC'],rt:'4,9',img:'./msem-assets/img/IMG_9517.JPG.jpeg',
+   story:'Le cauri, symbole de prospérité et de transmission, est brodé à la main sur cette robe fluide. Confectionnée sur mesure, elle épouse chaque silhouette.'},
+  {n:'Boubou Racines',r:'MSEM-FEM-0006',e:110,g:'Femmes',m:'Disponible',t:'Nouveau',sw:['#FBF6EC','#BF8A40'],rt:'4,8',img:'./msem-assets/img/IMG_9518.JPG.jpeg',
+   story:'Le boubou Racines est un hommage aux femmes qui transmettent. Le motif bogolan ocre y dessine des chemins de mémoire.'},
+  {n:'Chemise Héritage',r:'MSEM-HOM-0007',e:72,g:'Hommes',m:'Sur commande',sw:['#BF8A40','#A35317'],rt:'4,6',img:'./msem-assets/img/IMG_9519.JPG.jpeg',
+   story:'La chemise Héritage porte l\'or de nos mères. Brodée de fils dorés, elle rappelle que l\'élégance est un héritage que l\'on honore.'},
+  {n:'Pantalon Bâtisseur',r:'MSEM-HOM-0008',e:68,g:'Hommes',m:'Disponible',sw:['#2D241B','#A35317'],rt:'4,7',img:'./msem-assets/img/IMG_9520.JPG.jpeg',
+   story:'Le pantalon Bâtisseur évoque les gestes de ceux qui construisent. Ses plis souples rappellent le mouvement des dunes et la patience du Sahel.'}
+];
+
+/* =========================================================================
+   DEVISE
+   ========================================================================= */
+let cur = (()=>{ try{ const s = localStorage.getItem('msem-cur'); if(s) return s; }catch(e){}
+  try{ return /^Africa\//.test(Intl.DateTimeFormat().resolvedOptions().timeZone) ? 'XAF' : 'EUR'; }catch(e){ return 'EUR'; } })();
+const fmt = e => cur==='EUR'
+  ? new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(e)
+  : new Intl.NumberFormat('fr-FR').format(Math.round(e*655.957/500)*500) + ' FCFA';
+
+const star = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#BF8A40"><path d="m12 2 3 7 7 .6-5.3 4.7L18.3 22 12 18l-6.3 4 1.6-7.7L2 9.6 9 9z"/></svg>';
+
+/* RÉASSURANCE */
+document.getElementById('trust').innerHTML = [
+  ['M3 7h18v10H3zM3 11h18','Paiement flexible','MoMo, Orange Money, carte ou à la livraison'],
+  ['M2 6h12v9H2zM14 9h4l3 3v3h-7','Livraison suivie','Au Cameroun et à l\'international'],
+  ['M5 21 19 4M16 4c2 0 3 1 3 3','Sur mesure','Durée de confection annoncée'],
+  ['M4 5h16v11H9l-5 4z','Une question ?','Écrivez-nous sur WhatsApp']
+].map(t=>`<li class="flex gap-3 items-center"><span class="shrink-0 w-11 h-11 rounded-full bg-jaune text-brun grid place-items-center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="${t[0]}"/></svg></span><div><p class="font-semibold leading-tight">${t[1]}</p><p class="text-sm text-ink/65 leading-snug">${t[2]}</p></div></li>`).join('');
+
+/* CATÉGORIES */
+const CATS = [
+  {n:'Femmes',f:'Femmes',img:'./msem-assets/img/IMG_9523.JPG.jpeg'},
+  {n:'Hommes',f:'Hommes',img:'./msem-assets/img/IMG_9871.JPG.jpeg'},
+  {n:'Enfants',f:'Enfants',img:'./msem-assets/img/IMG_0152.JPG.jpeg'},
+  {n:'Sur mesure',f:'Sur mesure',img:'./msem-assets/img/IMG_9513.JPG.jpeg'}
+];
+document.getElementById('cats').innerHTML = CATS.map(c=>`
+  <a href="${c.f==='Sur mesure'?'#sur-mesure':'#boutique'}" data-f="${c.f}" class="group relative block aspect-[3/4] rounded-xl overflow-hidden">
+    <img src="${c.img}" alt="${c.n}" class="card-img">
+    <div class="absolute inset-0 bg-gradient-to-t from-brun/70 to-transparent"></div>
+    <span class="absolute inset-x-0 bottom-0 text-ivoire px-4 py-3 font-semibold f text-lg">${c.n}</span>
+  </a>`).join('') + ['Accessoires','Art et culture'].map((n,i)=>`
+  <a href="#bientot" class="relative block aspect-[3/4] rounded-xl overflow-hidden bg-paper2 border border-dashed border-ink/30">
+    <div class="absolute inset-0 grid place-items-center text-ink/25"><svg class="h-28 w-20" viewBox="0 0 190 237" aria-hidden="true"><use href="#ms-${i?'masque':'sceptre'}" fill="currentColor"/></svg></div>
+    <span class="absolute top-3 left-3 bg-jaune text-brun text-xs font-semibold rounded-full px-3 py-1">Bientôt</span>
+    <span class="absolute inset-x-0 bottom-0 bg-paper text-ink/65 px-4 py-3 font-semibold f text-lg">${n}</span>
+  </a>`).join('');
+
+/* GRILLE PRODUITS */
+document.getElementById('grid').innerHTML = P.map((p,i)=>`
+  <article class="group" data-g="${p.g}" data-m="${p.m}" data-s="${(p.n+' '+p.r+' '+p.g).toLowerCase()}">
+    <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper2 cursor-pointer" data-open="${i}">
+      <img src="${p.img}" alt="${p.n}" class="card-img" loading="lazy">
+      <div class="absolute left-3 top-3 flex flex-col gap-1 items-start">
+        ${p.t?`<span class="bg-jaune text-brun text-xs font-semibold rounded-full px-2.5 py-1">${p.t}</span>`:''}
+        ${p.m==='Sur commande'?'<span class="bg-paper text-ink text-xs font-semibold rounded-full px-2.5 py-1">Sur mesure</span>':''}
+      </div>
+      <button class="fav absolute right-3 top-3 w-9 h-9 rounded-full bg-paper text-ink grid place-items-center" aria-pressed="false" aria-label="Ajouter ${p.n} aux favoris">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11Z"/></svg>
+      </button>
+      <div class="absolute inset-x-2 bottom-2 p-2 rounded-lg bg-paper/95 text-ink transition-all duration-200 md:opacity-0 md:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+        <div class="flex gap-1 justify-center mb-2" role="group" aria-label="Taille">
+          ${['S','M','L','XL','XXL'].map(s=>`<button class="sz ${s==='M'?'on':''}" data-sz="${s}">${s}</button>`).join('')}
+        </div>
+        <button class="add btn w-full !min-h-[40px] !py-2 text-sm bg-brun text-ivoire hover:bg-terre dark:bg-jaune dark:text-brun" data-i="${i}">${p.m==='Disponible'?'Ajouter au panier':'Commander sur mesure'}</button>
+      </div>
+    </div>
+    <h3 class="mt-3 text-xl font-semibold leading-tight">${p.n}</h3>
+    <p class="text-xs text-ink/60">${p.m==='Disponible'?'Prêt à porter ou sur mesure':'Sur mesure uniquement'}</p>
+    <div class="flex items-center gap-2 mt-1 text-sm text-ink/65">
+      ${star}<span>${p.rt}</span>
+      <span class="flex gap-1 ml-auto">${p.sw.map(c=>`<i class="w-4 h-4 rounded-full border border-ink/30 block" style="background:${c}"></i>`).join('')}</span>
+    </div>
+    <p class="mt-1 font-semibold">
+      <span class="price" data-e="${p.e}">${fmt(p.e)}</span>
+      ${p.o?` <s class="price text-ink/50 font-normal text-sm ml-1" data-e="${p.o}">${fmt(p.o)}</s>`:''}
+    </p>
+  </article>`).join('');
+
+/* FILTRES + RECHERCHE */
+const TABS = ['Tout','Femmes','Hommes','Enfants','Sur commande'];
+let flt = 'Tout', qs = '';
+function apply(){
+  let n = 0;
+  document.querySelectorAll('#grid article').forEach(a=>{
+    const ok = (flt==='Tout' || a.dataset.g===flt || (flt==='Sur commande' && a.dataset.m==='Sur commande'))
+      && (!qs || a.dataset.s.includes(qs));
+    a.hidden = !ok; if(ok) n++;
+  });
+  document.getElementById('empty').classList.toggle('hidden', n>0);
+  document.getElementById('tabs').innerHTML = TABS.map(t=>`
+    <button role="tab" aria-selected="${t===flt}" data-t="${t}"
+      class="px-4 py-2 rounded-full text-sm font-semibold border ${t===flt?'bg-brun text-ivoire border-brun dark:bg-jaune dark:text-brun dark:border-jaune':'border-ink/30 hover:border-ink'}">${t==='Sur commande'?'Sur mesure uniquement':t}</button>`).join('');
+}
+apply();
+document.getElementById('tabs').onclick = e => { const b = e.target.closest('[data-t]'); if(b){ flt = b.dataset.t; apply(); } };
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-f]');
+  if(f){
+    flt = f.dataset.f==='Tout' ? 'Tout' : f.dataset.f==='Sur mesure' ? 'Sur commande' : f.dataset.f;
+    qs = ''; apply();
+    document.getElementById('mob').classList.add('hidden');
+  }
+});
+function srch(v){ qs = v.trim().toLowerCase(); flt = 'Tout'; apply(); document.getElementById('boutique').scrollIntoView(); }
+document.getElementById('sf').onsubmit = e => { e.preventDefault(); srch(document.getElementById('q').value); };
+document.getElementById('sf2').onsubmit = e => { e.preventDefault(); srch(document.getElementById('q2').value); document.getElementById('mob').classList.add('hidden'); };
+document.getElementById('q').addEventListener('input', e => srch(e.target.value));
+
+/* AVIS */
+document.getElementById('rev').innerHTML = [
+  ['Le boubou est magnifique et l\'histoire du modèle m\'a vraiment touchée. Je me suis sentie élégante et fière.','Aïcha, Douala','./msem-assets/img/IMG_0153.JPG.jpeg'],
+  ['Commandé depuis Paris, payé par carte. La robe sur mesure est arrivée exactement comme je l\'avais imaginée.','Nadège, Paris','./msem-assets/img/IMG_0153.JPG%20(1).jpeg'],
+  ['La chemise imprimée attire les regards à chaque fois. On me demande ce que signifient les symboles.','Patrick, Yaoundé','./msem-assets/img/IMG_9514.JPG.jpeg']
+].map(r=>`<figure class="rounded-2xl bg-paper2 overflow-hidden"><img src="${r[2]}" alt="" class="w-full h-48 object-cover" loading="lazy"><div class="p-6"><div class="flex">${star.repeat(5)}</div><blockquote class="f text-lg leading-snug mt-3">${r[0]}</blockquote><figcaption class="mt-4 text-sm font-semibold">${r[1]}</figcaption></div></figure>`).join('');
+
+/* PANIER */
+const cart = (()=>{ try{ return JSON.parse(localStorage.getItem('msem-cart')||'[]'); }catch(e){ return []; } })();
+const saveCart = () => { try{ localStorage.setItem('msem-cart', JSON.stringify(cart)); }catch(e){} };
+/* Ajout au panier : un article prêt à porter et le même article sur mesure sont deux lignes distinctes */
+function addToCart(i, s, sm, extra){
+  if(extra){ cart.push(Object.assign({i, s, q:1, sm:1}, extra)); }
+  else { const x = cart.find(y => y.i===i && y.s===s && !!y.sm===!!sm && !y.meas && !y.note); x ? x.q++ : cart.push({i, s, q:1, sm:sm?1:0}); }
+  drawCart();
+}
+const dr = document.getElementById('dr'), ov = document.getElementById('ov');
+
+function drawCart(){
+  const c = cart.reduce((s,x)=>s+x.q,0);
+  document.getElementById('cnt').textContent = c;
+  document.getElementById('tot').textContent = fmt(cart.reduce((s,x)=>s+x.q*P[x.i].e,0));
+  document.getElementById('items').innerHTML = cart.length ? cart.map((x,k)=>`
+    <li class="flex gap-4">
+      <img src="${P[x.i].img}" alt="" class="w-20 h-24 rounded-lg shrink-0 object-cover">
+      <div class="flex-1">
+        <p class="f text-lg font-semibold leading-tight">${P[x.i].n}</p>
+        <p class="text-sm text-ink/65">Taille ${x.s} · ${P[x.i].r}${x.sm?' · Sur mesure':''}</p>${x.sm&&(x.meas||x.note)?`<p class="text-xs text-ink/60">${[x.meas,x.note].filter(Boolean).join(' | ')}</p>`:''}
+        <p class="font-semibold mt-1">${fmt(P[x.i].e*x.q)}</p>
+        <div class="flex items-center gap-3 mt-1">
+          <button data-q="-1" data-k="${k}" class="w-8 h-8 rounded-full border border-ink/30" aria-label="Moins">−</button>
+          <span>${x.q}</span>
+          <button data-q="1" data-k="${k}" class="w-8 h-8 rounded-full border border-ink/30" aria-label="Plus">+</button>
+        </div>
+      </div>
+    </li>`).join('') : '<li class="text-ink/65">Votre panier est vide. Choisissez un modèle dans la boutique.</li>';
+  saveCart();
+}
+function openC(o){ dr.classList.toggle('translate-x-full', !o); ov.classList.toggle('hidden', !o); dr.setAttribute('aria-hidden', !o); document.getElementById('cartbtn').setAttribute('aria-expanded', o); }
+document.getElementById('cartbtn').onclick = () => openC(true);
+document.getElementById('dc').onclick = ov.onclick = () => openC(false);
+document.addEventListener('keydown', e => { if(e.key==='Escape') openC(false); });
+document.getElementById('items').onclick = e => {
+  const b = e.target.closest('[data-q]'); if(!b) return;
+  const x = cart[+b.dataset.k]; x.q += +b.dataset.q;
+  if(x.q<1) cart.splice(+b.dataset.k,1);
+  drawCart();
+};
+document.getElementById('clearCart').onclick = () => { cart.length = 0; drawCart(); };
+
+/* AJOUT PANIER + TAILLE + FAVORIS */
+let wc = 0;
+document.addEventListener('click', e => {
+  const s = e.target.closest('.sz');
+  if(s){ s.parentElement.querySelectorAll('.sz').forEach(x=>x.classList.remove('on')); s.classList.add('on'); return; }
+  const h = e.target.closest('.fav');
+  if(h){
+    e.stopPropagation();
+    const on = h.getAttribute('aria-pressed')!=='true';
+    h.setAttribute('aria-pressed', on);
+    h.firstElementChild.setAttribute('fill', on?'#A35317':'none');
+    wc += on?1:-1;
+    const w = document.getElementById('wc'); w.textContent = wc; w.classList.toggle('hidden', wc<1);
+    return;
+  }
+  const a = e.target.closest('.add');
+  if(a){
+    const sz = a.parentElement.querySelector('.sz.on').dataset.sz;
+    const i = +a.dataset.i;
+    addToCart(i, sz, P[i].m==='Sur commande'); openC(true);
+  }
+});
+
+/* MODALE FICHE PRODUIT */
+const pm = document.getElementById('productModal');
+let pmIndex = 0, pmSm = false;
+function pmModeUI(){
+  const p = P[pmIndex], both = p.m==='Disponible';
+  document.getElementById('pmMode').innerHTML = both
+    ? [['Prêt à porter',false],['Sur mesure',true]].map(([l,v])=>`<button type="button" data-md="${v?1:0}" class="px-4 py-2 rounded-full text-sm font-semibold border ${pmSm===v?'bg-brun text-ivoire border-brun dark:bg-jaune dark:text-brun dark:border-jaune':'border-ink/30 hover:border-ink'}">${l}</button>`).join('')
+    : '<span class="bg-jaune text-brun text-sm font-semibold rounded-full px-3 py-1">Confectionné sur mesure</span>';
+  document.getElementById('pmDur').textContent = pmSm ? 'Durée de confection : '+DUR[p.m]+', puis livraison.' : 'Disponible : expédié sans délai de confection.';
+  document.getElementById('pmAdd').textContent = pmSm ? 'Ajouter au panier (sur mesure)' : 'Ajouter au panier';
+}
+document.getElementById('pmMode').onclick = e => { const b = e.target.closest('[data-md]'); if(b){ pmSm = b.dataset.md==='1'; pmModeUI(); } };
+document.addEventListener('click', e => {
+  if(e.target.closest('.fav, .sz, .add')) return;   /* évite d'ouvrir la fiche en cliquant sur favori, taille ou bouton */
+  const open = e.target.closest('[data-open]');
+  if(open){
+    pmIndex = +open.dataset.open;
+    const p = P[pmIndex];
+    document.getElementById('pmRef').textContent = p.r;
+    document.getElementById('pmTitle').textContent = p.n;
+    document.getElementById('pmPrice').textContent = fmt(p.e);
+    document.getElementById('pmStory').textContent = p.story;
+    pmSm = p.m==='Sur commande'; pmModeUI();
+    document.getElementById('pmVisual').innerHTML = `<img src="${p.img}" alt="${p.n}" class="w-full h-full object-cover">`;
+    document.getElementById('pmSizes').innerHTML = ['S','M','L','XL','XXL'].map(s=>`<button class="sz ${s==='M'?'on':''}" data-sz="${s}">${s}</button>`).join('');
+    document.getElementById('pmColors').innerHTML = p.sw.map((c,i)=>`<button class="w-8 h-8 rounded-full border-2 ${i===0?'border-ink':'border-transparent'}" style="background:${c}" aria-label="Couleur ${c}"></button>`).join('');
+    pm.showModal();
+  }
+});
+document.getElementById('pmAdd').onclick = () => {
+  const sz = document.querySelector('#pmSizes .sz.on').dataset.sz;
+  addToCart(pmIndex, sz, pmSm); pm.close(); openC(true);
+};
+
+/* TUNNEL DE COMMANDE */
+const cm = document.getElementById('checkoutModal');
+const steps = ['Coordonnées','Livraison','Paiement','Confirmation'];
+let cmStep = 0;
+function renderCm(){
+  document.getElementById('cmSteps').innerHTML = steps.map((s,i)=>`
+    <li class="px-3 py-1 rounded-full ${i===cmStep?'bg-jaune text-brun':i<cmStep?'bg-brun text-ivoire':'bg-paper2 text-ink/60'}">${i+1}. ${s}</li>`).join('');
+  const total = fmt(cart.reduce((s,x)=>s+x.q*P[x.i].e,0));
+  const body = document.getElementById('cmBody');
+  if(cmStep===0){
+    body.innerHTML = `<form onsubmit="event.preventDefault();cmStep=1;renderCm()" class="grid gap-3">
+      <label class="text-sm font-semibold">Nom complet<input required class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4"></label>
+      <label class="text-sm font-semibold">Email<input required type="email" class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4"></label>
+      <label class="text-sm font-semibold">Téléphone<input required class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4"></label>
+      <button class="btn bg-brun text-ivoire mt-2 w-fit">Continuer</button>
+    </form>`;
+  } else if(cmStep===1){
+    body.innerHTML = `<form onsubmit="event.preventDefault();cmStep=2;renderCm()" class="grid gap-3">
+      <label class="text-sm font-semibold">Adresse<input required class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4"></label>
+      <div class="grid grid-cols-2 gap-3">
+        <label class="text-sm font-semibold">Ville<input required class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4"></label>
+        <label class="text-sm font-semibold">Pays<input required class="mt-1 w-full h-11 rounded-full border border-ink/30 bg-paper2 px-4" value="Cameroun"></label>
+      </div>
+      <p class="text-sm text-ink/65">Livraison estimée : 5 à 10 jours ouvrés. Total : <b>${total}</b></p>
+      <div class="flex gap-3"><button type="button" onclick="cmStep=0;renderCm()" class="btn border border-ink/40">Retour</button><button class="btn bg-brun text-ivoire">Continuer</button></div>
+    </form>`;
+  } else if(cmStep===2){
+    body.innerHTML = `<div class="grid gap-3">
+      <p class="text-sm font-semibold">Choisissez votre moyen de paiement</p>
+      ${['MTN MoMo','Orange Money','Carte bancaire','Paiement à la livraison'].map((m,i)=>`
+        <label class="flex items-center gap-3 rounded-xl border border-ink/20 p-3 cursor-pointer hover:border-ink/50">
+          <input type="radio" name="pay" ${i===0?'checked':''}> <span class="font-semibold">${m}</span>
+        </label>`).join('')}
+      <p class="text-sm text-ink/65">Total à régler : <b>${total}</b></p>
+      <div class="flex gap-3"><button type="button" onclick="cmStep=1;renderCm()" class="btn border border-ink/40">Retour</button><button type="button" onclick="cmStep=3;renderCm()" class="btn bg-jaune text-brun">Payer</button></div>
+    </div>`;
+  } else {
+    body.innerHTML = `<div class="text-center py-6">
+      <div class="mx-auto w-16 h-16 rounded-full bg-jaune text-brun grid place-items-center">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg>
+      </div>
+      <h4 class="f text-2xl font-semibold mt-4">Merci pour votre commande !</h4>
+      <p class="text-ink/75 mt-2">Un email de confirmation vous sera envoyé. Votre commande sera confectionnée et expédiée sous peu.</p>
+      <button class="btn bg-brun text-ivoire mt-6" onclick="document.getElementById('checkoutModal').close();cart.length=0;drawCart()">Continuer mes achats</button>
+    </div>`;
+  }
+}
+document.getElementById('checkout').onclick = () => {
+  if(cart.length===0) return;
+  cmStep = 0; renderCm(); openC(false); cm.showModal();
+};
+
+/* SUR MESURE : sélecteur graphique de modèles */
+const DUR = {'Disponible':'10 à 15 jours','Sur commande':'15 à 21 jours'};   /* à remplacer par les vraies durées */
+let smI = 0, smCol = 0;
+const $ = id => document.getElementById(id), smGrid = $('smGrid');
+smGrid.innerHTML = P.map((p,i)=>`
+  <button type="button" role="option" aria-selected="false" data-sm="${i}" class="group relative text-left rounded-xl overflow-hidden bg-ivoire text-brun ring-2 ring-transparent transition-shadow hover:shadow-soft">
+    <div class="aspect-[3/4] overflow-hidden"><img src="${p.img}" alt="${p.n}" class="card-img" loading="lazy"></div>
+    <div class="p-2.5"><p class="f font-semibold leading-tight text-[15px]">${p.n}</p><p class="price text-xs text-brun/70" data-e="${p.e}">${fmt(p.e)}</p></div>
+    <span class="absolute left-2 top-2 bg-jaune text-brun text-[11px] font-semibold rounded-full px-2 py-0.5">${p.m==='Disponible'?'Prêt à porter aussi':'Sur mesure'}</span>
+    <span class="chk hidden absolute right-2 top-2 w-7 h-7 rounded-full bg-brun text-ivoire grid place-items-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>
+  </button>`).join('');
+function smSelect(i){
+  smI = i; smCol = 0; const p = P[i];
+  smGrid.querySelectorAll('[data-sm]').forEach(b=>{ const on = +b.dataset.sm===i; b.setAttribute('aria-selected', on); b.classList.toggle('ring-brun', on); b.classList.toggle('ring-transparent', !on); b.querySelector('.chk').classList.toggle('hidden', !on); });
+  $('smImg').src = p.img; $('smImg').alt = p.n; $('smName').textContent = p.n; $('smRef').textContent = p.r;
+  $('smTag').textContent = p.m==='Disponible' ? 'Prêt à porter aussi' : 'Sur mesure uniquement';
+  $('smPrice').dataset.e = p.e; $('smPrice').textContent = fmt(p.e);
+  $('smDur').textContent = DUR[p.m];
+  $('smAlso').innerHTML = p.m==='Disponible' ? 'Ce modèle existe aussi en prêt à porter. <button type="button" class="underline font-semibold" data-open="'+i+'">Voir la fiche</button>' : 'Ce modèle est confectionné uniquement sur mesure.';
+  $('smCols').innerHTML = p.sw.map((c,k)=>`<button type="button" data-col="${k}" class="w-8 h-8 rounded-full border-2 ring-1 ring-brun/30 ${k===0?'border-brun':'border-transparent'}" style="background:${c}" aria-label="Couleur ${c}"></button>`).join('');
+}
+smGrid.onclick = e => { const b = e.target.closest('[data-sm]'); if(b) smSelect(+b.dataset.sm); };
+$('smCols').onclick = e => { const b = e.target.closest('[data-col]'); if(!b) return; smCol = +b.dataset.col; $('smCols').querySelectorAll('[data-col]').forEach(x=>{ x.classList.toggle('border-brun', x===b); x.classList.toggle('border-transparent', x!==b); }); };
+$('smMeas').onchange = e => $('smMF').classList.toggle('hidden', !e.target.checked);
+$('smAdd').onclick = () => {
+  const sz = document.querySelector('#smSizes .sz.on').dataset.sz;
+  const meas = $('smMeas').checked ? [...document.querySelectorAll('#smMF input')].filter(x=>x.value).map(x=>x.name+' '+x.value).join(', ') : '';
+  addToCart(smI, sz, true, {c:P[smI].sw[smCol], meas, note:$('smNote').value.trim()});
+  openC(true);
+};
+smSelect(0);
+
+/* NAV MOBILE */
+const bg = document.getElementById('burger'), mb = document.getElementById('mob');
+bg.onclick = () => { const o = mb.classList.toggle('hidden'); bg.setAttribute('aria-expanded', !o); };
+
+/* PEINTURE */
+function paint(){
+  document.querySelectorAll('.price').forEach(x => x.textContent = fmt(+x.dataset.e));
+  document.querySelectorAll('.cur').forEach(b => {
+    const on = b.dataset.cur===cur;
+    b.className = 'cur px-3 py-1 rounded-full ' + (on?'bg-jaune text-brun':'');
+    b.setAttribute('aria-pressed', on);
+  });
+  drawCart();
+}
+document.querySelectorAll('.cur').forEach(b => b.onclick = () => { cur = b.dataset.cur; try{ localStorage.setItem('msem-cur',cur); }catch(e){} paint(); });
+
+paint();
+</script>
+
+<!-- Couche d'identité MSEM (symboles SVG animés, fond bogolan, rail, coutures) -->
+<script src="./msem-assets/js/msem-identity.js"></script>
+</body>
+</html>

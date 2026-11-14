@@ -1,0 +1,81 @@
+/* ==========================================================================
+   MSEM — Couche d'identité visuelle
+   Fond d'écran bogolan, symboles animés, rail de symboles, coutures.
+   À charger APRÈS votre <style> principal. Chemins relatifs à CE fichier.
+   ========================================================================== */
+:root{
+  /* Versions alpha (utilisables avec mask-image, teintables en CSS) */
+  --bogo:url("./msem-assets/img/bogolan-alpha.png");
+  --icons:url("./msem-assets/img/motif-icones-alpha.png");
+  --frise:url("./msem-assets/img/frise.webp");
+  --ms-sym:var(--accent,#A35317);   /* couleur des symboles sur fond clair */
+  --ms-stitch:var(--accent,#A35317);
+  --ms-wall:url("./msem-assets/img/IMG/bogolan-fond-terre.webp");
+  --ms-wall-o:.055;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--ms-sym:#E2A262;--ms-stitch:#E2A262;--ms-wall:url("./msem-assets/img/IMG/bogolan-fond-ivoire.webp");--ms-wall-o:.05}
+}
+:root[data-theme="dark"]{--ms-sym:#E2A262;--ms-stitch:#E2A262;--ms-wall:url("./msem-assets/img/IMG/bogolan-fond-ivoire.webp");--ms-wall-o:.05}
+
+/* 1. Fond d'écran : le motif bogolan, très discret, défile lentement */
+.ms-wall{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--ms-wall) 0 var(--ms-wy,0px)/600px repeat;opacity:var(--ms-wall-o)}
+
+/* 2. Symboles flottants (couche fixe + couches de sections) */
+.ms-bg,.ms-sec{position:absolute;inset:0;overflow:hidden;pointer-events:none;color:var(--ms-sym);
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 11%,rgba(0,0,0,.16) 28%,rgba(0,0,0,.16) 72%,#000 89%,#000 100%);
+          mask-image:linear-gradient(90deg,#000 0,#000 11%,rgba(0,0,0,.16) 28%,rgba(0,0,0,.16) 72%,#000 89%,#000 100%)}
+.ms-bg{position:fixed;z-index:-1}
+.ms-sec{z-index:-1}
+.ms-host{position:relative;isolation:isolate}
+.ms-sec.on-dark{color:#BF8A40}
+.ms-sec.on-yellow{color:#A35317}
+.ms-sec.on-photo{color:#FBF6EC;z-index:0;-webkit-mask-image:none;mask-image:none}
+.ms-f{position:absolute;width:var(--w);left:var(--x);top:var(--y);opacity:var(--o,.12);
+  transform:translate3d(calc(var(--mx,0)*var(--k,1)*-16px),calc(var(--sy,0)*var(--k,1)*-.07px + var(--my,0)*var(--k,1)*-16px),0);
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.ms-s{display:block;width:100%;height:auto;fill:currentColor;overflow:visible;
+  animation:ms-fl var(--t,28s) ease-in-out var(--dl,0s) infinite alternate}
+@keyframes ms-fl{from{transform:translateY(-9px) rotate(calc(var(--r,0deg) - 5deg))}
+                 to{transform:translateY(11px) rotate(calc(var(--r,0deg) + 6deg))}}
+.ms-paused .ms-s,.ms-paused .ms-track{animation-play-state:paused}
+
+/* 3. Rail de symboles (frise défilante, entre deux sections) */
+.ms-rail{position:relative;overflow:hidden;margin-top:4rem;padding:1.1rem 0;border-block:1px solid rgba(191,138,64,.45);background:var(--paper2,#F3EAD7);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ms-track{display:flex;width:max-content;align-items:center;animation:ms-roll 90s linear infinite}
+.ms-track:hover{animation-play-state:paused}
+.ms-ri{display:flex;align-items:center;flex:none;padding-inline:1.6rem}
+.ms-ri svg{display:block;height:44px;fill:currentColor}
+.ms-ri:nth-child(odd){color:var(--accent,#A35317)}
+.ms-ri:nth-child(even){color:#BF8A40}
+.ms-ri::after{content:"";display:block;width:34px;height:3px;margin-left:3.2rem;background:repeating-linear-gradient(90deg,currentColor 0 7px,transparent 7px 13px);opacity:.55}
+@keyframes ms-roll{to{transform:translateX(-50%)}}
+
+/* 4. Frise or/brun en séparateur de sections */
+.ms-div{height:34px;margin-top:5rem;background:var(--frise) 0 0/auto 100% repeat-x}
+
+/* 5. Coutures sous les titres de section (se « cousent » à l'apparition) */
+main>section:not(:first-of-type) h2::after{content:"";display:block;height:3px;width:0;max-width:112px;margin-top:.9rem;
+  background:repeating-linear-gradient(90deg,var(--ms-stitch) 0 9px,transparent 9px 16px);
+  transition:width 1.2s cubic-bezier(.6,.1,.2,1)}
+main>section:not(:first-of-type) h2.ms-in::after{width:112px}
+main>section.text-center h2::after,main>section .text-center h2::after{margin-inline:auto}
+main>section.bg-brun h2,#bientot h2{--ms-stitch:#F2C80F}
+main>section.bg-jaune h2,#sur-mesure h2{--ms-stitch:#2D241B}
+
+/* Confort de lecture */
+@media (max-width:720px){
+  .ms-bg .ms-f:nth-child(3n),.ms-sec:not(.on-photo) .ms-f:nth-child(3n){display:none}
+  .ms-bg,.ms-sec{opacity:.7}
+  .ms-sec.on-photo{display:none}
+  .ms-ri svg{height:34px}
+}
+@media (prefers-contrast:more){.ms-wall,.ms-bg,.ms-sec{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .ms-s,.ms-track{animation:none!important}
+  .ms-f{transition:none;transform:none}
+  main>section:not(:first-of-type) h2::after{transition:none;width:112px}
+  .ms-wall{background-position:0 0}
+}
+@media print{.ms-wall,.ms-bg,.ms-sec,.ms-rail{display:none}}

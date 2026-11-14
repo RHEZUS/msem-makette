@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSEM — Démo de la couche d'identité</title>
+<style>
+:root{--paper:#FBF6EC;--paper2:#F3EAD7;--ink:#2D241B;--accent:#A35317;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--paper:#1B1510;--paper2:#241C15;--ink:#F3EAD7;--accent:#E2A262}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,sans-serif}
+h1,h2{font-family:Georgia,serif;font-weight:600;line-height:1.1;margin:0}h2{font-size:clamp(1.9rem,4vw,3rem)}
+.w{max-width:1200px;margin:0 auto;padding:0 1rem}section{padding:5rem 0}
+.hero{padding:1.2rem 0}.card{position:relative;overflow:hidden;border-radius:1rem;background:#2D241B;color:#FBF6EC;min-height:520px}
+.card .relative{position:relative;padding:3rem;max-width:30rem}.card h1{font-size:3.2rem}
+.btn{display:inline-block;background:#F2C80F;color:#2D241B;padding:.8rem 1.5rem;border-radius:99px;font-weight:600;margin-top:1.4rem}
+#trust{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.2rem 0;margin:0;border-block:1px solid rgba(191,138,64,.4)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}.grid i{display:block;aspect-ratio:4/5;border-radius:.8rem;background:#E4CBA0}
+.bg-jaune{background:#F2C80F;color:#2D241B}.bg-brun{background:#2D241B;color:#FBF6EC}
+footer{background:#231B13;color:#FBF6EC;padding:3rem 0}
+p{max-width:36rem}@media(max-width:720px){#trust,.grid{grid-template-columns:1fr 1fr}.card .relative{padding:1.6rem}.card h1{font-size:2.2rem}}
+</style>
+<link rel="stylesheet" href="css/msem-identity.css">
+</head>
+<body>
+<main>
+ <section class="hero"><div class="w"><div class="card"><div class="relative"><h1>La Grandeur se porte avant de se voir.</h1><p>Boubous, robes, chemises et pantalons qui portent l’histoire et les symboles de l’Afrique.</p><a class="btn" href="#">Voir la boutique</a></div></div></div></section>
+ <section style="padding:1rem 0"><div class="w"><ul id="trust"><li><b>Paiement flexible</b><br>MoMo, Orange Money, carte</li><li><b>Livraison suivie</b><br>Cameroun et international</li><li><b>Sur mesure</b><br>Durée annoncée</li><li><b>Une question ?</b><br>WhatsApp</li></ul></div></section>
+ <section><div class="w"><h2>Les dernières créations</h2><p>Chaque modèle raconte son histoire et explique ses symboles.</p><div class="grid"><i></i><i></i><i></i><i></i></div></div></section>
+ <section id="signature"><div class="w"><h2>Un imprimé qui raconte une histoire.</h2><p>Masques, cauris, continent, spirales et aiguilles : chez MSEM, rien n’est décoratif. Chaque symbole du motif a une signification, expliquée sur la fiche de chaque modèle.</p></div></section>
+ <section id="sur-mesure" class="bg-jaune"><div class="w"><h2>Votre tenue, confectionnée pour vous.</h2><p>Choisissez un modèle et nous le confectionnons. La durée de confection est annoncée avant de commander.</p></div></section>
+ <section id="histoire"><div class="w"><h2>MSEM n’habille pas des corps. MSEM révèle des identités.</h2><p>L’Afritude n’est pas un style vestimentaire, c’est une posture : moderne sans renier ses traditions, ouverte au monde sans perdre son âme.</p></div></section>
+ <section id="bientot" class="bg-brun"><div class="w"><h2>Accessoires, objets et œuvres d’art africains.</h2><p>Après les vêtements, MSEM ouvrira ses étagères aux accessoires et aux objets culturels qui racontent l’Afrique.</p></div></section>
+</main>
+<footer id="contact"><div class="w"><b>MSEM</b> — La Grandeur se porte avant de se voir.</div></footer>
+<script src="js/msem-identity.js"></script>
+</body>
+</html>
